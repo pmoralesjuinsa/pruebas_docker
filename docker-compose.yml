@@ -2,15 +2,8 @@ version: "3"
 
 services:
   miservicio_mysql:
-    image: mimysql
+    image: mimysql:latest
   miservicio_php:
-    image: php:7-apache
-    volumes:
-      # Montamos nuestra web desde fuera en el directorio web del contenedor
-      - /home/pmorales/PhpstormProjects:/var/www/html
-    expose:
-      - 80
-    ports:
-      - 8080:80
+    image: miapahephp:latest
     links:
       - miservicio_mysql

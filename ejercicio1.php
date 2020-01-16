@@ -1,5 +1,4 @@
 <?php
-
 $usuario = "root";
 $contrasena = "123456";
 $servidor = "elalias";
@@ -21,5 +20,3 @@ while ($columna = mysqli_fetch_array( $resultado ))
 }
 
 echo "</ul>";
-
-?>

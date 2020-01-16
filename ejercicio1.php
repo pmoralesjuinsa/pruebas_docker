@@ -1,9 +1,9 @@
 <?php
 
 $usuario = "root";
-$contrasena = "132456";
-$servidor = "localhost";
-$basededatos = "alumnos";
+$contrasena = "123456";
+$servidor = "elalias";
+$basededatos = "pruebas";
 
 $conexion = mysqli_connect( $servidor, $usuario, $contrasena ) or die ("No se ha podido conectar al servidor de Base de datos");
 

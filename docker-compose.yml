@@ -1,26 +1,35 @@
-version: "3"
+version: "3.4"
 
 services:
   miservicio_mysql:
-    image: mimysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
+    build:
+      context: .
+      target: mimysqlcom
     volumes:
-      - mysq-db-data:/var/lib/mysql
+      - mysql-db-data:/var/lib/mysql
     ports:
       - 33060:3306
-    #environment:
-      #MYSQL_ROOT_PASSWORD: 123456
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8181:8080
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 8181:8080
 
   miservicio_php:
-    image: miapachephp
+    build:
+      context: .
+      target: miapachephpcom
     volumes:
-      - /home/pmorales/PhpstormProjects:/var/www/html
+      - .:/var/www/html
     links:
-      - miservicio_mysql
+      - miservicio_mysql:elalias
+    ports:
+          - 80:80
+
+volumes:
+  mysql-db-data:

@@ -1,14 +1,14 @@
-FROM php:7.4.1-apache AS miapachephp
+FROM php:7.4.1-apache AS miapachephpcom
 
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
 VOLUME /var/www/html
 
-EXPOSE 3306
-
-FROM mysql:latest AS mimysql
-
 EXPOSE 80
+
+FROM mysql:latest AS mimysqlcom
+
+EXPOSE 3306
 
 VOLUME /var/lib/mysql
 

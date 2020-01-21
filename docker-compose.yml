@@ -10,26 +10,22 @@ services:
     volumes:
       - mysql-db-data:/var/lib/mysql
     ports:
-      - 33060:3306
+      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: 123456
-
-#  adminer:
-#    image: adminer
-#    restart: always
-#    ports:
-#      - 8181:8080
 
   miservicio_php:
     build:
       context: .
       target: miapachephpcom
     volumes:
-      - .:/var/www/html
+      - ./../EjerciciosPhp/POO_MVC:/var/www/html
     links:
       - miservicio_mysql:elalias
     ports:
           - 80:80
+    depends_on:
+      - miservicio_mysql
 
 volumes:
   mysql-db-data:
